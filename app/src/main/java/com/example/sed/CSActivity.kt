@@ -38,7 +38,7 @@ class CSActivity : AppCompatActivity() {
         val url = "http://springtown.in/test/fetch_scheme.php"
         var scheme_data:String=""
         // this creates a vertical layout Manager
-
+        val adapter = CustomAdapter(list,this)
         val stringRequest = StringRequest( Request.Method.GET, url,
             Response.Listener<String> { response ->
                 //textshow_error_msg.text = "Response is: ${response}"
@@ -52,7 +52,7 @@ class CSActivity : AppCompatActivity() {
                     val user=ItemsViewModel(scheme_name)
                     list.add(user)
                 }
-
+                    adapter.notifyDataSetChanged()
                     //scheme_data=response
                     //val intent = Intent(this, MainActivity::class.java)
                     //startActivity(intent)
@@ -73,7 +73,7 @@ class CSActivity : AppCompatActivity() {
         recyclerview.layoutManager = LinearLayoutManager(this)
 
         // This will pass the ArrayList to our Adapter
-        val adapter = CustomAdapter(list,this)
+        //val adapter = CustomAdapter(list,this)
 
         // Setting the Adapter with the recyclerview
         recyclerview.adapter = adapter
