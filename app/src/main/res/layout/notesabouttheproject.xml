@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+   <!--https://docs.github.com/en/get-started/quickstart/hello-world
+   https://stackoverflow.com/questions/9605913/how-do-i-parse-json-in-android
+https://www.youtube.com/watch?v=FTs2kf6qduA
+
+
+
+   -->
+
+
+
+
+
+
+
+</LinearLayout>
