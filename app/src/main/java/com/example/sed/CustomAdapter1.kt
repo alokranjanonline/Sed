@@ -11,8 +11,8 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 
-class CustomAdapter(private val mList: List<ItemsViewModel>, var context:Context) :
-    RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+class CustomAdapter1(private val mList: List<ItemsViewModel>, var context:Context) :
+    RecyclerView.Adapter<CustomAdapter1.ViewHolder>() {
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

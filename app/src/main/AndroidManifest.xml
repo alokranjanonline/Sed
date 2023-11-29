@@ -16,10 +16,13 @@
         android:theme="@style/Theme.Sed"
         tools:targetApi="31">
         <activity
+            android:name=".SchemeDetails"
+            android:exported="false" />
+        <activity
             android:name=".SchemenameActivity"
             android:exported="false"
             android:parentActivityName=".CSActivity"
-            android:theme="@style/Theme.AppCompat.Light"/>
+            android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".CSActivity"
             android:exported="false"
