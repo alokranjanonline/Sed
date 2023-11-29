@@ -27,11 +27,11 @@ class SchemenameActivity : AppCompatActivity() {
         mAdView = findViewById(R.id.adView)
         val actionbar=supportActionBar
         actionbar!!.title="Choose Scheme Name"
-        var receiver_msg: TextView = findViewById(R.id.textView1)
-        //val intet: Intent
-        val str = intent.getStringExtra("schemeId") as Int
-        receiver_msg.text=str.toString()
-        fetch_data(str)
+        var receiver_msg: TextView = findViewById(R.id.txtSchemename)
+        val intet: Intent
+        val str = intent.getStringExtra("schemeId")
+        receiver_msg.text=str
+        fetch_data(1)
 
         //Coding for RecycleVIew
         // getting the recyclerview by its id
@@ -49,7 +49,7 @@ class SchemenameActivity : AppCompatActivity() {
         // Fetch the data from server //
 
         val queue = Volley.newRequestQueue(this)
-        val url = "http://springtown.in/test/fetch_scheme_name.php?scheme_type_id="+str
+        val url = "http://springtown.in/test/fetch_scheme_name.php?scheme_id="+str
         val textshow_error_msg = findViewById<TextView>(R.id.textView1)
         val stringRequest = StringRequest( Request.Method.GET, url,
             Response.Listener<String> { response ->

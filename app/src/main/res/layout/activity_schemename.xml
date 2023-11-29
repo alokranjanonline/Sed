@@ -37,9 +37,15 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/textView1"
-        android:visibility="gone"
+        android:id="@+id/txtSchemename"
+
         android:text="Hello Sed"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/textView1"
+
+        android:text="Hello Text View 1"/>
     <include layout="@layout/banner_ad"/>
 
 </RelativeLayout>
