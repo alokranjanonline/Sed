@@ -26,10 +26,10 @@ class SchemenameActivity : AppCompatActivity() {
         setContentView(R.layout.activity_schemename)
         mAdView = findViewById(R.id.adView)
         val actionbar=supportActionBar
-        actionbar!!.title="Choose Scheme Name"
         var receiver_msg: TextView = findViewById(R.id.txtSchemename)
         val intet: Intent
         val str = intent.getStringExtra("schemeId")
+        actionbar!!.title=intent.getStringExtra("schemeName")
         receiver_msg.text=str
         fetch_data(1)
 

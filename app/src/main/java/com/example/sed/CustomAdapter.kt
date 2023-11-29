@@ -39,6 +39,7 @@ class CustomAdapter(private val mList: List<ItemsViewModel>, var context:Context
             Toast.makeText(context, ItemsViewModel.text, Toast.LENGTH_SHORT).show()
             val intent = Intent(context, SchemenameActivity::class.java)
             intent.putExtra("schemeId", ItemsViewModel.schemeId)
+            intent.putExtra("schemeName", ItemsViewModel.text)
             context.startActivity(intent)
         }
 

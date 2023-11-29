@@ -10,9 +10,11 @@ class SchemeDetails : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scheme_details)
+        val actionbar=supportActionBar
         val schemeDetails = findViewById<TextView>(R.id.schemedetails)
         val intet: Intent
         val str = intent.getStringExtra("schemeId")
         schemeDetails.text=str
+        actionbar!!.title=intent.getStringExtra("schemeName")
     }
 }
