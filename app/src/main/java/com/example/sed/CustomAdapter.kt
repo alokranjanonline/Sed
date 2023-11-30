@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 
 class CustomAdapter(private val mList: List<ItemsViewModel>, var context:Context) :
     RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
@@ -31,6 +32,7 @@ class CustomAdapter(private val mList: List<ItemsViewModel>, var context:Context
 
         // sets the image to the imageview from our itemHolder class
         //holder.imageView.setImageResource(ItemsViewModel.image)
+        Picasso.with(context).load(ItemsViewModel.image).into(holder.imageView)
 
         // sets the text to the textview from our itemHolder class
         holder.textView1.text = ItemsViewModel.schemeId
@@ -52,7 +54,7 @@ class CustomAdapter(private val mList: List<ItemsViewModel>, var context:Context
 
     // Holds the views for adding it to image and text
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        //val imageView: ImageView = itemView.findViewById(R.id.imageview)
+        val imageView: ImageView = itemView.findViewById(R.id.imageview)
         val textView: TextView = itemView.findViewById(R.id.textView)
         val textView1: TextView = itemView.findViewById(R.id.textView1)
     }

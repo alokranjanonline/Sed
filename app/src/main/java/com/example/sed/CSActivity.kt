@@ -75,7 +75,9 @@ class CSActivity : AppCompatActivity() {
                         val jo=jsonArray.getJSONObject(i)
                         val scheme_id=jo.get("scheme_id").toString()
                         val scheme_name=jo.get("scheme_name").toString()
-                        val user=ItemsViewModel(scheme_name,scheme_id)
+                        val scheme_image=jo.get("scheme_image")
+                        val url="http://springtown.in/test/images/"+scheme_image
+                        val user=ItemsViewModel(scheme_name,scheme_id,url)
                         list.add(user)
                     }
                     adapter.notifyDataSetChanged()
