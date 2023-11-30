@@ -1,23 +1,20 @@
 package com.example.sed
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.KeyEvent
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.android.volley.Request
-import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
-import com.google.android.gms.ads.MobileAds
 import org.json.JSONObject
 
 class SchemenameActivity : AppCompatActivity() {
+    private var number: Int = 0
     private lateinit var  mAdView : AdView
     private var list:ArrayList<ItemsViewModel> = ArrayList()
     val adapter = CustomAdapter1(list,this)
@@ -26,8 +23,8 @@ class SchemenameActivity : AppCompatActivity() {
         setContentView(R.layout.activity_schemename)
         mAdView = findViewById(R.id.adView)
         val actionbar=supportActionBar
-        var receiver_msg: TextView = findViewById(R.id.txtSchemename)
-        val intet: Intent
+        val receiver_msg: TextView = findViewById(R.id.txtSchemename)
+        //val intet: Intent
         val str = intent.getStringExtra("schemeId")
         actionbar!!.title=intent.getStringExtra("schemeName")
         receiver_msg.text=str
@@ -42,8 +39,20 @@ class SchemenameActivity : AppCompatActivity() {
         // Setting the Adapter with the recyclerview
         recyclerview.adapter = adapter
 
+
+        //Swipe to refresh
+        swipeToRefresh(recyclerview)
         show_banner_ads(mAdView,this)
 
+    }
+    fun swipeToRefresh(recyclerview:RecyclerView){
+        val swipeRefreshLayout: SwipeRefreshLayout = findViewById(R.id.swipe)
+        swipeRefreshLayout.setOnRefreshListener {
+            val textshow_error_msg = findViewById<TextView>(R.id.textView1)
+            textshow_error_msg.text = number++.toString()
+            recyclerview.setAdapter(adapter)
+            swipeRefreshLayout.isRefreshing = false
+        }
     }
     fun fetch_data(str:Int){
         // Fetch the data from server //
@@ -52,7 +61,7 @@ class SchemenameActivity : AppCompatActivity() {
         val url = "http://springtown.in/test/fetch_scheme_name.php?scheme_id="+str
         val textshow_error_msg = findViewById<TextView>(R.id.textView1)
         val stringRequest = StringRequest( Request.Method.GET, url,
-            Response.Listener<String> { response ->
+            { response ->
                 //textshow_error_msg.text = "Response is: ${response}"
                 val jsonObject= JSONObject(response)
                 if(jsonObject.get("response").equals("sucess")){
@@ -74,7 +83,7 @@ class SchemenameActivity : AppCompatActivity() {
                     Toast.makeText(this, "Login failed", Toast.LENGTH_SHORT).show()
                 }
             },
-            Response.ErrorListener { textshow_error_msg.text = "Failed" })
+            { textshow_error_msg.text = "Failed" })
         // Add the request to the RequestQueue.
         queue.add(stringRequest)
     }

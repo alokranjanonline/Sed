@@ -41,6 +41,7 @@
         android:id="@+id/textView1"
         android:visibility="visible"
         android:text="Hello Sed"/>
+    <include layout="@layout/internet_availability"/>
     <include layout="@layout/banner_ad"/>
 
 </RelativeLayout>

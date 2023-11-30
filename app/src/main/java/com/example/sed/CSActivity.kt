@@ -49,15 +49,20 @@ class CSActivity : AppCompatActivity() {
 
 
         //Swipe to refresh
+        swipeToRefresh(recyclerview)
+
+
+        //Show mobile ad
+        show_banner_ads(mAdView,this)
+    }
+    fun swipeToRefresh(recyclerview:RecyclerView){
         val swipeRefreshLayout: SwipeRefreshLayout = findViewById(R.id.swipe)
         swipeRefreshLayout.setOnRefreshListener {
+            val textshow_error_msg = findViewById<TextView>(R.id.textView1)
             textshow_error_msg.text = number++.toString()
             recyclerview.setAdapter(adapter)
             swipeRefreshLayout.isRefreshing = false
         }
-
-        //Show mobile ad
-        show_banner_ads(mAdView,this)
     }
     fun fetch_data(){
         // Fetch the data from server //

@@ -46,6 +46,7 @@
         android:id="@+id/textView1"
 
         android:text="Hello Text View 1"/>
+    <include layout="@layout/internet_availability"/>
     <include layout="@layout/banner_ad"/>
 
 </RelativeLayout>
