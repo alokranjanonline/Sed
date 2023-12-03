@@ -4,18 +4,22 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.Adapter
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 
 
-
+lateinit var  mAdView : AdView
+var number: Int = 0
 fun show_banner_ads(mAdView:AdView,context:Context ) {
     MobileAds.initialize(context) {}
     val adRequest = AdRequest.Builder().build()
     mAdView.loadAd(adRequest)
 }
-
 fun checkForInternet(context: Context): Boolean {
     val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 

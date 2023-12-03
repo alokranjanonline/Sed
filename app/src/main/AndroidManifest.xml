@@ -16,10 +16,15 @@
         android:theme="@style/Theme.Sed"
         tools:targetApi="31">
         <activity
+            android:name=".StateScheme"
+            android:exported="false"
+
+            android:theme="@style/Theme.AppCompat.Light"/>
+        <activity
             android:name=".SchemeDetailsWebview"
             android:exported="false"
             android:parentActivityName=".SchemenameActivity"
-            android:theme="@style/Theme.AppCompat.Light"/>
+            android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".SchemeDetails"
             android:exported="false"

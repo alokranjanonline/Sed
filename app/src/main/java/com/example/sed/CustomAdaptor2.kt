@@ -8,11 +8,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
-class CustomAdapter(private val mList: List<ItemsViewModel>, var context:Context) :
-    RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+class CustomAdapter2(private val mList: List<ItemsViewModel>, var context:Context) :
+    RecyclerView.Adapter<CustomAdapter2.ViewHolder>() {
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -37,16 +38,18 @@ class CustomAdapter(private val mList: List<ItemsViewModel>, var context:Context
         holder.textView1.text = ItemsViewModel.schemeId
         holder.textView.text = ItemsViewModel.text
         holder.textView2.text = ItemsViewModel.schemeUrl
-        holder.itemView.setOnClickListener{
-            Toast.makeText(context, ItemsViewModel.schemeId, Toast.LENGTH_SHORT).show()
+        holder.textView3.text = ItemsViewModel.state_id
+        holder.itemView.setOnClickListener(){
+            Toast.makeText(context, ItemsViewModel.state_id, Toast.LENGTH_SHORT).show()
             if(ItemsViewModel.schemeId.toInt()==2){
-                val intent = Intent(context, StateScheme::class.java)
-                intent.putExtra("schemeId", ItemsViewModel.schemeId.toInt())
+                val intent = Intent(context, SchemenameActivity::class.java)
+                intent.putExtra("schemeId", ItemsViewModel.schemeId.toInt() )
                 intent.putExtra("schemeName", ItemsViewModel.text)
+                intent.putExtra("stateId", ItemsViewModel.state_id.toInt())
                 context.startActivity(intent)
-            }else {
+            }else{
                 if (ItemsViewModel.schemeUrl == "null") {
-                    val intent = Intent(context, SchemenameActivity::class.java)
+                    val intent = Intent(context, SchemeDetails::class.java)
                     intent.putExtra("schemeId", ItemsViewModel.schemeId.toInt() )
                     intent.putExtra("schemeName", ItemsViewModel.text)
                     intent.putExtra("stateId", 0.toInt())
@@ -59,7 +62,6 @@ class CustomAdapter(private val mList: List<ItemsViewModel>, var context:Context
                     context.startActivity(intent)
                 }
             }
-
         }
 
     }
@@ -75,6 +77,7 @@ class CustomAdapter(private val mList: List<ItemsViewModel>, var context:Context
         val textView: TextView = itemView.findViewById(R.id.textView)
         val textView1: TextView = itemView.findViewById(R.id.textView1)
         val textView2: TextView = itemView.findViewById(R.id.textView2)
+        val textView3: TextView = itemView.findViewById(R.id.textView3)
     }
 }
 

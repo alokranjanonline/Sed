@@ -30,28 +30,9 @@
                 android:id="@+id/myWebView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <Button
-                    android:layout_width="500dp"
-                    android:layout_height="100dp"
-                    android:text="Refresh"
-                    android:id="@+id/button1">
-                </Button>
-                <TextView
-                    android:id="@+id/internetalert"
-                    android:layout_width="500dp"
-                    android:layout_height="100dp"
-                    android:layout_x="80dp"
-                    android:layout_y="350dp"
-                    android:text="TextView" />
             </WebView>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </LinearLayout>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/submit1"
-        android:text="Submit"/>
-    <include layout="@layout/internet_availability"/>
     <include layout="@layout/banner_ad"/>
 </RelativeLayout>

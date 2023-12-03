@@ -30,7 +30,7 @@ class SchemeDetailsWebview : AppCompatActivity() {
     private lateinit var  mAdView : AdView
     private var number: Int = 0
     companion object {
-        var globalUrl = "http://www.sportainmentdesign.com/"
+        var globalUrl = ""
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,8 +38,15 @@ class SchemeDetailsWebview : AppCompatActivity() {
         setContentView(R.layout.activity_scheme_details_webview)
         val myWebView: WebView = findViewById(R.id.myWebView)
         mAdView = findViewById(R.id.adView)
-        val button1: Button =findViewById(R.id.button1)
-        val alertMsg: TextView =findViewById(R.id.internetalert)
+        //val button1: Button =findViewById(R.id.button1)
+        //val alertMsg: TextView =findViewById(R.id.internetalert)
+        val actionbar=supportActionBar
+        val str = intent.getStringExtra("schemeId")
+        actionbar!!.title=intent.getStringExtra("schemeName")
+        globalUrl= intent.getStringExtra("schemeUrl").toString()
+        val intent = Intent(this, SchemenameActivity::class.java)
+        intent.putExtra("Username", "John Doe")
+        intent.putExtra("schemeabc", "hello Alok")
         if (checkForInternet(this)) {
             val progressBar: ProgressBar = findViewById(R.id.progress_bar)
             myWebView.settings.javaScriptEnabled = true
@@ -79,7 +86,7 @@ class SchemeDetailsWebview : AppCompatActivity() {
             //Swipe to refresh
             val swipeRefreshLayout: SwipeRefreshLayout = findViewById(R.id.swipe)
             swipeRefreshLayout.setOnRefreshListener {
-                alertMsg.text = number++.toString()
+                //alertMsg.text = number++.toString()
                 myWebView.loadUrl(globalUrl)
                 swipeRefreshLayout.isRefreshing = false
             }

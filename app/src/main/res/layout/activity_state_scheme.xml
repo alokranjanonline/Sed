@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SchemenameActivity">
-
-
+    tools:context=".StateScheme">
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="8dp"
@@ -34,5 +32,4 @@
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     <include layout="@layout/banner_ad"/>
-
 </RelativeLayout>

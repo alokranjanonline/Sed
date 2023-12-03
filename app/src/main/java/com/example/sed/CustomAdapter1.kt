@@ -37,12 +37,21 @@ class CustomAdapter1(private val mList: List<ItemsViewModel>, var context:Contex
         // sets the text to the textview from our itemHolder class
         holder.textView1.text = ItemsViewModel.schemeId
         holder.textView.text = ItemsViewModel.text
+        holder.textView2.text = ItemsViewModel.schemeUrl
         holder.itemView.setOnClickListener(){
-            Toast.makeText(context, ItemsViewModel.text, Toast.LENGTH_SHORT).show()
-            val intent = Intent(context, SchemeDetailsWebview::class.java)
-            intent.putExtra("schemeId", ItemsViewModel.schemeId)
-            intent.putExtra("schemeName", ItemsViewModel.text)
-            context.startActivity(intent)
+            Toast.makeText(context, ItemsViewModel.schemeId, Toast.LENGTH_SHORT).show()
+            if(ItemsViewModel.schemeUrl=="null"){
+                val intent = Intent(context, SchemeDetails::class.java)
+                intent.putExtra("schemeId", ItemsViewModel.schemeId)
+                intent.putExtra("schemeName", ItemsViewModel.text)
+                context.startActivity(intent)
+            }else{
+                val intent = Intent(context, SchemeDetailsWebview::class.java)
+                intent.putExtra("schemeId", ItemsViewModel.schemeId)
+                intent.putExtra("schemeName", ItemsViewModel.text)
+                intent.putExtra("schemeUrl", ItemsViewModel.schemeUrl)
+                context.startActivity(intent)
+            }
         }
 
     }
@@ -57,6 +66,8 @@ class CustomAdapter1(private val mList: List<ItemsViewModel>, var context:Contex
         val imageView: ImageView = itemView.findViewById(R.id.imageview)
         val textView: TextView = itemView.findViewById(R.id.textView)
         val textView1: TextView = itemView.findViewById(R.id.textView1)
+        val textView2: TextView = itemView.findViewById(R.id.textView2)
+        val textView3: TextView = itemView.findViewById(R.id.textView3)
     }
 }
 
