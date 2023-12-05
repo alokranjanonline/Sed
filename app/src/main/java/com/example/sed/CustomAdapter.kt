@@ -43,6 +43,8 @@ class CustomAdapter(private val mList: List<ItemsViewModel>, var context:Context
                 val intent = Intent(context, StateScheme::class.java)
                 intent.putExtra("schemeId", ItemsViewModel.schemeId.toInt())
                 intent.putExtra("schemeName", ItemsViewModel.text)
+                load_interestitialAds(context, holder)
+                show_inter_ad(context,holder,StateScheme())
                 context.startActivity(intent)
             }else {
                 if (ItemsViewModel.schemeUrl == "null") {
