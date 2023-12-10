@@ -40,12 +40,12 @@ class CustomAdapter(private val mList: List<ItemsViewModel>, var context:Context
         holder.itemView.setOnClickListener{
             Toast.makeText(context, ItemsViewModel.schemeId, Toast.LENGTH_SHORT).show()
             if(ItemsViewModel.schemeId.toInt()==2){
-                val intent = Intent(context, StateScheme::class.java)
-                intent.putExtra("schemeId", ItemsViewModel.schemeId.toInt())
-                intent.putExtra("schemeName", ItemsViewModel.text)
-                load_interestitialAds(context, holder)
-                show_inter_ad(context,holder,StateScheme())
-                context.startActivity(intent)
+                //val intent = Intent(context, StateScheme::class.java)
+                //intent.putExtra("schemeId", ItemsViewModel.schemeId.toInt())
+                //intent.putExtra("schemeName", ItemsViewModel.text)
+                //context.startActivity(intent)
+                loadInterestitialAd(context, holder,ItemsViewModel.schemeId.toInt(),ItemsViewModel.text)
+                showInterestitialAd(context,holder,StateScheme(),ItemsViewModel.schemeId.toInt(),ItemsViewModel.text)
             }else {
                 if (ItemsViewModel.schemeUrl == "null") {
                     val intent = Intent(context, SchemenameActivity::class.java)

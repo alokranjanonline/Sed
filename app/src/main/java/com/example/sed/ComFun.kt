@@ -19,13 +19,14 @@ import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import org.w3c.dom.Text
 
 
 lateinit var  mAdView : AdView
 private var mInterstitialAd: InterstitialAd? = null
 var adRequest = AdRequest.Builder().build()
 var number: Int = 0
-fun load_interestitialAds(context: Context, holder:CustomAdapter.ViewHolder){
+fun loadInterestitialAd(context: Context, holder:CustomAdapter.ViewHolder,schemeId:Int,schemeName:String){
     InterstitialAd.load(context,"ca-app-pub-3940256099942544/1033173712", adRequest, object : InterstitialAdLoadCallback() {
         override fun onAdFailedToLoad(adError: LoadAdError) {
             mInterstitialAd = null
@@ -38,7 +39,7 @@ fun load_interestitialAds(context: Context, holder:CustomAdapter.ViewHolder){
         }
     })
 }
-fun show_inter_ad(context: Context,holder:CustomAdapter.ViewHolder, activity: Activity){
+fun showInterestitialAd(context: Context,holder:CustomAdapter.ViewHolder, activity: Activity,schemeId:Int,schemeName:String){
     mInterstitialAd?.fullScreenContentCallback = object: FullScreenContentCallback() {
         override fun onAdClicked() {
             // Called when a click is recorded for an ad.
@@ -53,6 +54,8 @@ fun show_inter_ad(context: Context,holder:CustomAdapter.ViewHolder, activity: Ac
             mInterstitialAd = null
             val intent = Intent(context, activity::class.java)
             intent.putExtra("message_key", "Hello Alok")
+            intent.putExtra("schemeId", schemeId)
+            intent.putExtra("schemeName", schemeName)
             context.startActivity(intent)
         }
 
