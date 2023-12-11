@@ -57,7 +57,7 @@ class StateScheme : AppCompatActivity() {
         val textShow_error_msg = findViewById<TextView>(R.id.textErrorDisplay)
         val stringRequest = StringRequest( Request.Method.GET, url,
             { response ->
-                //textshow_error_msg.text = "Response is: ${response}"
+                textShow_error_msg.text = "Response is: ${url}"
                 val jsonObject= JSONObject(response)
                 if(jsonObject.get("response").equals("sucess")){
                     val jsonArray=jsonObject.getJSONArray("data")

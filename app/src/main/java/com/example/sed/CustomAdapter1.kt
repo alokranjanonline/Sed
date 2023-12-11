@@ -43,8 +43,8 @@ class CustomAdapter1(private val mList: List<ItemsViewModel>, var context:Contex
             Toast.makeText(context, ItemsViewModel.schemeId, Toast.LENGTH_SHORT).show()
             if(ItemsViewModel.schemeUrl=="null"){
                 if(adCounter ==5){
-                    loadInterestitialAd(context, ItemsViewModel.schemeId.toInt(),ItemsViewModel.text)
-                    showInterestitialAd(context, StateScheme(),ItemsViewModel.schemeId.toInt(),ItemsViewModel.text)
+                    loadInterestitialAd(context, ItemsViewModel.schemeId.toInt(),ItemsViewModel.text,0)
+                    showInterestitialAd(context, StateScheme(),ItemsViewModel.schemeId.toInt(),ItemsViewModel.text,0)
                     adCounter =0
                 }else{
                     val intent = Intent(context, SchemeDetails::class.java)
@@ -55,8 +55,8 @@ class CustomAdapter1(private val mList: List<ItemsViewModel>, var context:Contex
                 adCounter++
             }else{
                 if(adCounter ==5){
-                    loadInterestitialAd(context, ItemsViewModel.schemeId.toInt(),ItemsViewModel.text)
-                    showInterestitialAd(context, StateScheme(),ItemsViewModel.schemeId.toInt(),ItemsViewModel.text)
+                    loadInterestitialAd(context, ItemsViewModel.schemeId.toInt(),ItemsViewModel.text,0)
+                    showInterestitialAd(context, StateScheme(),ItemsViewModel.schemeId.toInt(),ItemsViewModel.text,0)
                     adCounter =0
                 }else{
                     val intent = Intent(context, SchemeDetailsWebview::class.java)

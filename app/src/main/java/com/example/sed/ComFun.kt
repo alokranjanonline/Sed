@@ -33,7 +33,7 @@ lateinit var  mAdView : AdView
 private var mInterstitialAd: InterstitialAd? = null
 var adRequest = AdRequest.Builder().build()
 var number: Int = 0
-fun loadInterestitialAd(context: Context, /*holder:CustomAdapter.ViewHolder,*/ schemeId:Int,schemeName:String){
+fun loadInterestitialAd(context: Context, /*holder:CustomAdapter.ViewHolder,*/ schemeId:Int,schemeName:String,stateId:Int){
     InterstitialAd.load(context,"ca-app-pub-3940256099942544/1033173712", adRequest, object : InterstitialAdLoadCallback() {
         override fun onAdFailedToLoad(adError: LoadAdError) {
             mInterstitialAd = null
@@ -46,7 +46,7 @@ fun loadInterestitialAd(context: Context, /*holder:CustomAdapter.ViewHolder,*/ s
         }
     })
 }
-fun showInterestitialAd(context: Context,/*holder:CustomAdapter.ViewHolder,*/ activity: Activity,schemeId:Int,schemeName:String){
+fun showInterestitialAd(context: Context,/*holder:CustomAdapter.ViewHolder,*/ activity: Activity,schemeId:Int,schemeName:String,stateId:Int){
     mInterstitialAd?.fullScreenContentCallback = object: FullScreenContentCallback() {
         override fun onAdClicked() {
             // Called when a click is recorded for an ad.
@@ -63,6 +63,7 @@ fun showInterestitialAd(context: Context,/*holder:CustomAdapter.ViewHolder,*/ ac
             intent.putExtra("message_key", "Hello Alok")
             intent.putExtra("schemeId", schemeId)
             intent.putExtra("schemeName", schemeName)
+            intent.putExtra("stateId", stateId)
             context.startActivity(intent)
         }
 

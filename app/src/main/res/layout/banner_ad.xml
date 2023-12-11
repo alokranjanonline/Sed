@@ -10,7 +10,7 @@
         android:padding="10dp"
         android:layout_marginBottom="120dp"
         android:id="@+id/internetAvailability"
-        android:visibility="visible"
+        android:visibility="gone"
         android:text="Please check your internt connection"/>
     <TextView
         android:layout_width="wrap_content"

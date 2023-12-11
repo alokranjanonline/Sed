@@ -44,8 +44,8 @@ class CustomAdapter2(private val mList: List<ItemsViewModel>, var context:Contex
             Toast.makeText(context, ItemsViewModel.state_id, Toast.LENGTH_SHORT).show()
             if(ItemsViewModel.schemeId.toInt()==2){
                 if(adCounter ==5){
-                    loadInterestitialAd(context, ItemsViewModel.schemeId.toInt(),ItemsViewModel.text)
-                    showInterestitialAd(context, StateScheme(),ItemsViewModel.schemeId.toInt(),ItemsViewModel.text)
+                    loadInterestitialAd(context, ItemsViewModel.schemeId.toInt(),ItemsViewModel.text,0)
+                    showInterestitialAd(context, StateScheme(),ItemsViewModel.schemeId.toInt(),ItemsViewModel.text,0)
                     adCounter =0
                 }else{
                     val intent = Intent(context, SchemenameActivity::class.java)
@@ -58,8 +58,8 @@ class CustomAdapter2(private val mList: List<ItemsViewModel>, var context:Contex
             }else{
                 if (ItemsViewModel.schemeUrl == "null") {
                     if(adCounter ==5){
-                        loadInterestitialAd(context, ItemsViewModel.schemeId.toInt(),ItemsViewModel.text)
-                        showInterestitialAd(context, StateScheme(),ItemsViewModel.schemeId.toInt(),ItemsViewModel.text)
+                        loadInterestitialAd(context, ItemsViewModel.schemeId.toInt(),ItemsViewModel.text,0)
+                        showInterestitialAd(context, StateScheme(),ItemsViewModel.schemeId.toInt(),ItemsViewModel.text,0)
                         adCounter =0
                     }else{
                         val intent = Intent(context, SchemeDetails::class.java)
@@ -71,8 +71,8 @@ class CustomAdapter2(private val mList: List<ItemsViewModel>, var context:Contex
                     adCounter++
                 } else {
                     if(adCounter ==5){
-                        loadInterestitialAd(context, ItemsViewModel.schemeId.toInt(),ItemsViewModel.text)
-                        showInterestitialAd(context, StateScheme(),ItemsViewModel.schemeId.toInt(),ItemsViewModel.text)
+                        loadInterestitialAd(context, ItemsViewModel.schemeId.toInt(),ItemsViewModel.text,0)
+                        showInterestitialAd(context, StateScheme(),ItemsViewModel.schemeId.toInt(),ItemsViewModel.text,0)
                         adCounter =0
                     }else{
                         val intent = Intent(context, SchemeDetailsWebview::class.java)
