@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
+import com.example.sed.MainActivity.Companion.adCounter
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
@@ -42,24 +43,45 @@ class CustomAdapter2(private val mList: List<ItemsViewModel>, var context:Contex
         holder.itemView.setOnClickListener(){
             Toast.makeText(context, ItemsViewModel.state_id, Toast.LENGTH_SHORT).show()
             if(ItemsViewModel.schemeId.toInt()==2){
-                val intent = Intent(context, SchemenameActivity::class.java)
-                intent.putExtra("schemeId", ItemsViewModel.schemeId.toInt() )
-                intent.putExtra("schemeName", ItemsViewModel.text)
-                intent.putExtra("stateId", ItemsViewModel.state_id.toInt())
-                context.startActivity(intent)
-            }else{
-                if (ItemsViewModel.schemeUrl == "null") {
-                    val intent = Intent(context, SchemeDetails::class.java)
+                if(adCounter ==5){
+                    loadInterestitialAd(context, ItemsViewModel.schemeId.toInt(),ItemsViewModel.text)
+                    showInterestitialAd(context, StateScheme(),ItemsViewModel.schemeId.toInt(),ItemsViewModel.text)
+                    adCounter =0
+                }else{
+                    val intent = Intent(context, SchemenameActivity::class.java)
                     intent.putExtra("schemeId", ItemsViewModel.schemeId.toInt() )
                     intent.putExtra("schemeName", ItemsViewModel.text)
-                    intent.putExtra("stateId", 0.toInt())
+                    intent.putExtra("stateId", ItemsViewModel.state_id.toInt())
                     context.startActivity(intent)
+                }
+                adCounter++
+            }else{
+                if (ItemsViewModel.schemeUrl == "null") {
+                    if(adCounter ==5){
+                        loadInterestitialAd(context, ItemsViewModel.schemeId.toInt(),ItemsViewModel.text)
+                        showInterestitialAd(context, StateScheme(),ItemsViewModel.schemeId.toInt(),ItemsViewModel.text)
+                        adCounter =0
+                    }else{
+                        val intent = Intent(context, SchemeDetails::class.java)
+                        intent.putExtra("schemeId", ItemsViewModel.schemeId.toInt() )
+                        intent.putExtra("schemeName", ItemsViewModel.text)
+                        intent.putExtra("stateId", 0.toInt())
+                        context.startActivity(intent)
+                    }
+                    adCounter++
                 } else {
-                    val intent = Intent(context, SchemeDetailsWebview::class.java)
-                    intent.putExtra("schemeId", ItemsViewModel.schemeId)
-                    intent.putExtra("schemeName", ItemsViewModel.text)
-                    intent.putExtra("schemeUrl", ItemsViewModel.schemeUrl)
-                    context.startActivity(intent)
+                    if(adCounter ==5){
+                        loadInterestitialAd(context, ItemsViewModel.schemeId.toInt(),ItemsViewModel.text)
+                        showInterestitialAd(context, StateScheme(),ItemsViewModel.schemeId.toInt(),ItemsViewModel.text)
+                        adCounter =0
+                    }else{
+                        val intent = Intent(context, SchemeDetailsWebview::class.java)
+                        intent.putExtra("schemeId", ItemsViewModel.schemeId)
+                        intent.putExtra("schemeName", ItemsViewModel.text)
+                        intent.putExtra("schemeUrl", ItemsViewModel.schemeUrl)
+                        context.startActivity(intent)
+                    }
+                    adCounter++
                 }
             }
         }

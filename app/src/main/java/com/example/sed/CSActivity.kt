@@ -55,7 +55,7 @@ class CSActivity : AppCompatActivity() {
         val textShow_error_msg = findViewById<TextView>(R.id.textErrorDisplay)
         val stringRequest = StringRequest( Request.Method.GET, url,
             Response.Listener<String> { response ->
-                //textShow_error_msg.text = "Response is: ${response}"
+                textShow_error_msg.text = "Response is: ${response}"
                 val jsonObject=JSONObject(response)
                 if(jsonObject.get("response").equals("sucess")){
                     val jsonArray=jsonObject.getJSONArray("data")

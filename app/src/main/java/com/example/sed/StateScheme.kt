@@ -25,10 +25,10 @@ class StateScheme : AppCompatActivity() {
         mAdView = findViewById(R.id.adView)
         val actionbar=supportActionBar
         val textShow_error_msg: TextView = findViewById(R.id.textErrorDisplay)
-        val textShow_Internet_msg: TextView = findViewById(R.id.internetAvailability)
+        var textShow_Internet_msg: TextView = findViewById(R.id.internetAvailability)
         val str = intent.getStringExtra("schemeId")
         actionbar!!.title=intent.getStringExtra("schemeName")
-
+        textShow_Internet_msg.text= MainActivity.adCounter.toString()
         //textShow_error_msg.text=str
         fetch_data()
 

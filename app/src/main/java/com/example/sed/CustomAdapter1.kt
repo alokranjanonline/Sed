@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
+import com.example.sed.MainActivity.Companion.adCounter
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
@@ -41,16 +42,30 @@ class CustomAdapter1(private val mList: List<ItemsViewModel>, var context:Contex
         holder.itemView.setOnClickListener(){
             Toast.makeText(context, ItemsViewModel.schemeId, Toast.LENGTH_SHORT).show()
             if(ItemsViewModel.schemeUrl=="null"){
-                val intent = Intent(context, SchemeDetails::class.java)
-                intent.putExtra("schemeId", ItemsViewModel.schemeId)
-                intent.putExtra("schemeName", ItemsViewModel.text)
-                context.startActivity(intent)
+                if(adCounter ==5){
+                    loadInterestitialAd(context, ItemsViewModel.schemeId.toInt(),ItemsViewModel.text)
+                    showInterestitialAd(context, StateScheme(),ItemsViewModel.schemeId.toInt(),ItemsViewModel.text)
+                    adCounter =0
+                }else{
+                    val intent = Intent(context, SchemeDetails::class.java)
+                    intent.putExtra("schemeId", ItemsViewModel.schemeId)
+                    intent.putExtra("schemeName", ItemsViewModel.text)
+                    context.startActivity(intent)
+                }
+                adCounter++
             }else{
-                val intent = Intent(context, SchemeDetailsWebview::class.java)
-                intent.putExtra("schemeId", ItemsViewModel.schemeId)
-                intent.putExtra("schemeName", ItemsViewModel.text)
-                intent.putExtra("schemeUrl", ItemsViewModel.schemeUrl)
-                context.startActivity(intent)
+                if(adCounter ==5){
+                    loadInterestitialAd(context, ItemsViewModel.schemeId.toInt(),ItemsViewModel.text)
+                    showInterestitialAd(context, StateScheme(),ItemsViewModel.schemeId.toInt(),ItemsViewModel.text)
+                    adCounter =0
+                }else{
+                    val intent = Intent(context, SchemeDetailsWebview::class.java)
+                    intent.putExtra("schemeId", ItemsViewModel.schemeId)
+                    intent.putExtra("schemeName", ItemsViewModel.text)
+                    intent.putExtra("schemeUrl", ItemsViewModel.schemeUrl)
+                    context.startActivity(intent)
+                }
+                adCounter++
             }
         }
 

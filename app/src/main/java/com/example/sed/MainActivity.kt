@@ -9,6 +9,10 @@ import java.util.Timer
 import kotlin.concurrent.timerTask
 
 class MainActivity : ComponentActivity() {
+    companion object {
+        var adCounter:Int = 0
+        var adError:String=""
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
